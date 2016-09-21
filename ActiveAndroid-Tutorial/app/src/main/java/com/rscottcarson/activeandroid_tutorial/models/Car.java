@@ -5,15 +5,20 @@ import android.provider.BaseColumns;
 import com.activeandroid.Model;
 import com.activeandroid.annotation.Column;
 import com.activeandroid.annotation.Table;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+
+import java.util.List;
 
 /**
  * Created by scottcarson on 9/9/16.
  */
-@Table(name = Car.CAR_TABLE_NAME, id = BaseColumns._ID)
+@Table(name = Car.TABLE_NAME)
 public class Car extends Model {
 
     // Declare table name as public
-    public static final String CAR_TABLE_NAME = "car_table";
+    public static final String TABLE_NAME = "Cars";
 
     // Declare all column names private
     private static final String COLUMN_ENGINE = "engine";
@@ -25,10 +30,10 @@ public class Car extends Model {
     private Engine engine;
 
     @Column(name = COLUMN_BODY)
-    private int body;
+    private Body body;
 
     @Column(name = COLUMN_WHEEL)
-    private int wheels;
+    private List<Wheel> wheels;
 
     @Column(name = COLUMN_SERIAL_NUMBER, onUniqueConflict = Column.ConflictAction.REPLACE)
     private int serialNumber;
@@ -47,19 +52,19 @@ public class Car extends Model {
         engine = _engine;
     }
 
-    public int getBody() {
+    public Body getBody() {
         return body;
     }
 
-    public void setBody(int _body) {
+    public void setBody(Body _body) {
         body = _body;
     }
 
-    public int getWheels() {
+    public List<Wheel>  getWheels() {
         return wheels;
     }
 
-    public void setWheels(int _wheels) {
+    public void setWheels(List<Wheel>  _wheels) {
         wheels = _wheels;
     }
 
@@ -69,6 +74,45 @@ public class Car extends Model {
 
     public void setSerialNumber(int _serialNumber) {
         serialNumber = _serialNumber;
+    }
+
+    private JsonArray getWheelsList(){
+        JsonArray arr = new JsonArray();
+
+        for(Wheel w : wheels){
+            arr.add(w.getJsonObject());
+        }
+
+        return arr;
+    }
+
+    public JsonObject getJsonObject(){
+
+        JsonObject car = new JsonObject();
+        JsonObject obj = new JsonObject();
+
+        obj.addProperty(COLUMN_SERIAL_NUMBER, serialNumber);
+        obj.add(COLUMN_ENGINE, engine.getJsonObject());
+        obj.add(COLUMN_BODY, body.getJsonObject());
+        obj.add(COLUMN_WHEEL, getWheelsList());
+
+        car.add("Car", obj);
+
+        return car;
+    }
+
+    @Override
+    public String toString(){
+        JsonObject obj = new JsonObject();
+
+        obj.addProperty(COLUMN_SERIAL_NUMBER, serialNumber);
+        obj.add(COLUMN_ENGINE, engine.getJsonObject());
+        obj.add(COLUMN_BODY, body.getJsonObject());
+        obj.add(COLUMN_WHEEL, getWheelsList());
+
+        String s = obj.getAsString();
+
+        return s;
     }
 
 
