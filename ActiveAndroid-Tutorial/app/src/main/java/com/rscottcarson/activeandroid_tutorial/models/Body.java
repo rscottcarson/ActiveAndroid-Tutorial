@@ -10,25 +10,27 @@ import com.google.gson.JsonObject;
 @Table(name = Body.TABLE_NAME)
 public class Body extends CarPart {
 
+    public static final int BODY_STYLE_SPORT = 1;
+
     public static final String TABLE_NAME = "Bodies";
 
     private static final String COLUMN_BODYSTYLE = "bodyStyle";
 
     @Column(name = COLUMN_BODYSTYLE)
-    private static int bodyStyle;
+    private int bodyStyle;
 
+    // Mandatory no-arg constructor
     public Body(){
         super();
     }
 
     // Getters and Setters
-
-    public static int getBodyStyle() {
+    public int getBodyStyle() {
         return bodyStyle;
     }
 
-    public static void setBodyStyle(int _bodyStyle) {
-        Body.bodyStyle = _bodyStyle;
+    public void setBodyStyle(int _bodyStyle) {
+        bodyStyle = _bodyStyle;
     }
 
     @Override

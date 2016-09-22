@@ -11,11 +11,15 @@ import com.google.gson.JsonObject;
 @Table(name = Engine.TABLE_NAME)
 public class Engine extends CarPart {
 
+    public static final String FUEL_TYPE_GAS = "gas";
+    public static final int CYLINDERS_FOUR = 4;
+    public static final double VOLUME_3_7_L = 3.7;
+
     public static final String TABLE_NAME = "Engines";
 
     private static final String COLUMN_VOLUME = "volume";
     private static final String COLUMN_CYLINDERS = "cylinders";
-    private static final String COLUMN_GASTYPE = "gasType";
+    private static final String COLUMN_FUELTYPE = "fuelType";
 
     @Column(name = COLUMN_VOLUME)
     private double volume;
@@ -23,8 +27,8 @@ public class Engine extends CarPart {
     @Column(name = COLUMN_CYLINDERS)
     private int cylinders;
 
-    @Column(name = COLUMN_GASTYPE)
-    private String gasType;
+    @Column(name = COLUMN_FUELTYPE)
+    private String fuelType;
 
     // Mandatory no-arg constructor
     public Engine(){
@@ -48,12 +52,12 @@ public class Engine extends CarPart {
         cylinders = _cylinders;
     }
 
-    public String getGasType() {
-        return gasType;
+    public String getFuelType() {
+        return fuelType;
     }
 
-    public void setGasType(String _gasType) {
-        gasType = _gasType;
+    public void setFuelType(String _fuelType) {
+        fuelType = _fuelType;
     }
 
     @Override
@@ -62,7 +66,7 @@ public class Engine extends CarPart {
 
         obj.addProperty(COLUMN_VOLUME, volume);
         obj.addProperty(COLUMN_CYLINDERS, cylinders);
-        obj.addProperty(COLUMN_GASTYPE, gasType);
+        obj.addProperty(COLUMN_FUELTYPE, fuelType);
 
         return obj;
     }

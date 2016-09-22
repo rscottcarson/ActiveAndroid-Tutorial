@@ -1,12 +1,10 @@
 package com.rscottcarson.activeandroid_tutorial.models;
 
-import android.provider.BaseColumns;
 
 import com.activeandroid.Model;
 import com.activeandroid.annotation.Column;
 import com.activeandroid.annotation.Table;
 import com.google.gson.JsonArray;
-import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 
 import java.util.List;
@@ -24,7 +22,7 @@ public class Car extends Model {
     private static final String COLUMN_ENGINE = "engine";
     private static final String COLUMN_BODY = "body";
     private static final String COLUMN_WHEEL = "wheels";
-    private static final String COLUMN_SERIAL_NUMBER = "serial_number";
+    private static final String COLUMN_SERIAL_NUMBER = "serialNumber";
 
     @Column(name = COLUMN_ENGINE)
     private Engine engine;
@@ -94,26 +92,11 @@ public class Car extends Model {
         obj.addProperty(COLUMN_SERIAL_NUMBER, serialNumber);
         obj.add(COLUMN_ENGINE, engine.getJsonObject());
         obj.add(COLUMN_BODY, body.getJsonObject());
-        obj.add(COLUMN_WHEEL, getWheelsList());
+        //obj.add(COLUMN_WHEEL, getWheelsList()); // TODO: Implement TypeSerializer for List<>
 
         car.add("Car", obj);
 
         return car;
     }
-
-    @Override
-    public String toString(){
-        JsonObject obj = new JsonObject();
-
-        obj.addProperty(COLUMN_SERIAL_NUMBER, serialNumber);
-        obj.add(COLUMN_ENGINE, engine.getJsonObject());
-        obj.add(COLUMN_BODY, body.getJsonObject());
-        obj.add(COLUMN_WHEEL, getWheelsList());
-
-        String s = obj.getAsString();
-
-        return s;
-    }
-
 
 }

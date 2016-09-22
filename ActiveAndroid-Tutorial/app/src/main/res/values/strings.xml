@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">ActiveAndroid-Tutorial</string>
+    <string name="button_load_car_text">Load Car</string>
 </resources>
