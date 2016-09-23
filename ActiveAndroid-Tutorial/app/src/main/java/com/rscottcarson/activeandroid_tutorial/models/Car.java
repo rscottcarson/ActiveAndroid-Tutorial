@@ -33,7 +33,10 @@ public class Car extends Model {
     @Column(name = COLUMN_WHEEL)
     private List<Wheel> wheels;
 
-    @Column(name = COLUMN_SERIAL_NUMBER, onUniqueConflict = Column.ConflictAction.REPLACE)
+    @Column(name = COLUMN_SERIAL_NUMBER,
+            unique = true,
+            onUniqueConflict = Column.ConflictAction.REPLACE,
+            index = true)
     private int serialNumber;
 
     /**

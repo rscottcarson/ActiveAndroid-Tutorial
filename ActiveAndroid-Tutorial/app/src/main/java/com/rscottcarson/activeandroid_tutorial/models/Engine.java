@@ -1,6 +1,5 @@
 package com.rscottcarson.activeandroid_tutorial.models;
 
-import com.activeandroid.Model;
 import com.activeandroid.annotation.Column;
 import com.activeandroid.annotation.Table;
 import com.google.gson.JsonObject;
