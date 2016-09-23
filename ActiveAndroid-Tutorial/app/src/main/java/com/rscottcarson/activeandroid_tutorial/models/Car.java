@@ -36,7 +36,9 @@ public class Car extends Model {
     @Column(name = COLUMN_SERIAL_NUMBER, onUniqueConflict = Column.ConflictAction.REPLACE)
     private int serialNumber;
 
-    // Mandatory no arg constructor
+    /**
+     * Mandatory no arg constructor
+      */
     public Car(){
         super();
     }
@@ -74,6 +76,10 @@ public class Car extends Model {
         serialNumber = _serialNumber;
     }
 
+    /**
+     * Build a JsonArray for display purposes
+     * @return
+     */
     private JsonArray getWheelsList(){
         JsonArray arr = new JsonArray();
 
@@ -84,6 +90,10 @@ public class Car extends Model {
         return arr;
     }
 
+    /**
+     * Get the JSON representation of the car - for display purposes
+     * @return
+     */
     public JsonObject getJsonObject(){
 
         JsonObject car = new JsonObject();
