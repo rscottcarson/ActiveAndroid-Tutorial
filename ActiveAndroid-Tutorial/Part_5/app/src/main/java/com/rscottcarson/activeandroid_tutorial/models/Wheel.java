@@ -55,4 +55,11 @@ public class Wheel extends CarPart {
 
         return obj;
     }
+
+    @Override
+    public String toString(){
+        String s = getJsonObject().toString();
+
+        return s;
+    }
 }

@@ -8,10 +8,17 @@
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
-        android:name="com.activeandroid.app.Application">
+        android:name=".CarBuilderApplication">
 
-        <meta-data android:name="AA_DB_NAME" android:value="tutorial.db" />
-        <meta-data android:name="AA_DB_VERSION" android:value="1" />
+        <meta-data
+            android:name="AA_DB_NAME"
+            android:value="tutorial.db" />
+        <meta-data
+            android:name="AA_DB_VERSION"
+            android:value="1" />
+        <meta-data
+            android:name="AA_SERIALIZERS"
+            android:value="com.rscottcarson.activeandroid_tutorial.type_serializers.ListTypeSerializer"/>
 
         <activity android:name=".activities.MainActivity">
             <intent-filter>

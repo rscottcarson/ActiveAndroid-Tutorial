@@ -107,7 +107,7 @@ public class Car extends Model {
         obj.add(COLUMN_BODY, body.getJsonObject());
 
         // TODO: Implement TypeSerializer for List<>
-        //obj.add(COLUMN_WHEEL, getWheelsList());
+        obj.add(COLUMN_WHEEL, getWheelsList());
 
         car.add("Car", obj);
 
