@@ -105,7 +105,9 @@ public class Car extends Model {
         obj.addProperty(COLUMN_SERIAL_NUMBER, serialNumber);
         obj.add(COLUMN_ENGINE, engine.getJsonObject());
         obj.add(COLUMN_BODY, body.getJsonObject());
-        //obj.add(COLUMN_WHEEL, getWheelsList()); // TODO: Implement TypeSerializer for List<>
+
+        // TODO: Implement TypeSerializer for List<>
+        //obj.add(COLUMN_WHEEL, getWheelsList());
 
         car.add("Car", obj);
 

@@ -17,8 +17,6 @@ public class CarBuilderApplication extends Application {
 
         GsonBuilder gBuilder = new GsonBuilder();
 
-        gson = gBuilder
-                .setPrettyPrinting()
-                .create();
+        gson = gBuilder.create();
     }
 }
