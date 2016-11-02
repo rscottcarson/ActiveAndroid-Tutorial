@@ -19,8 +19,7 @@ public class CarBuilderApplication extends Application {
     public void onCreate(){
         super.onCreate();
 
-        GsonBuilder gBuilder = new GsonBuilder();
-
+        // build new gson instance
         gson = new GsonBuilder()
                 .excludeFieldsWithModifiers(Modifier.FINAL, Modifier.TRANSIENT, Modifier.STATIC)
                 .create();
@@ -28,12 +27,19 @@ public class CarBuilderApplication extends Application {
         sInstance = this;
     }
 
+    /**
+     * Get global gson instance
+     * @return
+     */
     public Gson getGson(){
         return gson;
     }
 
+    /**
+     * Restrict access to the app through a static instance
+     * @return
+     */
     public static CarBuilderApplication getApp(){
         return sInstance;
     }
-
 }
